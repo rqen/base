@@ -28,8 +28,8 @@ var options = {
 	autoprefixer: {browsers: ['last 4 versions', '> 2%', 'ie >= 9', 'Firefox ESR']},
 	sass: {
 		errLogToConsole: true,
-	    outputStyle: productionBuild ? 'compressed' : 'expanded',
-	    sourceComments: productionBuild ? false : 'normal'
+		outputStyle: productionBuild ? 'compressed' : 'expanded',
+		sourceComments: productionBuild ? false : 'normal'
 	},
 	paths: {
 		sass: {
@@ -51,13 +51,13 @@ var options = {
 
 gulp.task('sass', function() {
 	return gulp.src(options.paths.sass.src)
-	    .pipe(sass(options.sass).on('error', sass.logError))
-	    .on('error', function (error) {
-            console.error(error);
-            this.emit('end');
-        })
-	    .pipe(gulp.dest(options.paths.sass.dest))
-	    .pipe(browserSync.stream());
+		.pipe(sass(options.sass).on('error', sass.logError))
+		.on('error', function (error) {
+			console.error(error);
+			this.emit('end');
+		})
+		.pipe(gulp.dest(options.paths.sass.dest))
+		.pipe(browserSync.stream());
 });
 
 gulp.task('postcss', function () {
