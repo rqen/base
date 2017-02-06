@@ -1,0 +1,115 @@
+//Headings
+
+%h1 {
+    font-size: rem($h1-mobile);
+    line-height: 1;
+    font-weight: 700;
+    margin-top: rem(25);
+    margin-bottom: rem(25);
+    //letter-spacing: rem(-2);
+    @include mq($from:screen-sm) {
+        font-size: rem($h1-desktop);
+    }
+}
+
+%h2 {
+    font-size: rem($h2-mobile);
+    line-height: 1;
+    font-weight: 700;
+    margin-top: rem(20);
+    margin-bottom: rem(20);
+    @include mq($from: screen-sm) {
+        font-size: rem($h2-desktop);
+    }
+}
+%h3 {
+    font-size: rem($h3-mobile);
+    line-height: 1;
+    font-weight: 700;
+    margin-top: rem(15);
+    margin-bottom: rem(15);
+    @include mq($from: screen-sm) {
+        font-size: rem($h3-desktop);
+    }
+}
+%h3-small {
+    font: normal rem(25)/1 $font-primary;
+}
+%h4 {
+    font: 700 rem($h4-mobile)/1 $font-primary;
+    color: $color-black;
+    margin: 0 0 rem($space-xsmall);
+    @include mq($from: screen-sm) {
+        font-size: rem($h4-desktop);
+    }
+}
+%h5 {
+    font: bold rem($article-font-size)/1.4 $font-primary;
+    &:not(.collapse--bottom) {
+        margin: 0 0 rem($space-xsmall, $article-font-size);
+    }
+}
+%paragraph {
+    font: normal #{rem($article-font-size)}/1.4 $font-primary;
+    max-width: rem(740);
+
+    &:not(:last-child) {
+        margin-bottom: rem($space-small);
+    }
+    &.collapse {
+        margin: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    &.t--small {
+        font-size: rem(12);
+    }
+    > em {
+        font-style: italic;
+    }
+    > a {
+        text-decoration: underline;
+    }
+}
+
+%clearfix {
+    @include clearfix();
+}
+
+.clearfix {
+    @include clearfix();
+}
+
+%is-fixed {
+    @include mq($until: screen-sm) {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        //overflow-y: scroll;
+    }
+}
+
+%pricing {
+    .price-sales, .price-range {
+        color: $color-black;
+        font-weight: bold;
+    }
+    .price-standard {
+        font-weight: 500;
+        color: $color-dark-grey;
+        text-decoration: line-through;
+
+        & + .price-sales,
+        & + .price {
+            color: $color-bittersweet-red;
+            margin-left: rem(5);
+        }
+    }
+}
+
+%header-popover-effect {
+    box-shadow: 0 rem(1) rem(1) 0 rgba($color-black, .5);
+}
+

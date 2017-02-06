@@ -1,0 +1,371 @@
+html {
+	font-size: 100%;
+}
+body {
+	font: normal 1em/1.4375 $font-primary;
+	margin: 0;
+	color: $color-black;
+	background-color: $color-bg-primary;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: antialiased;
+	&.disabled-scrolling {
+		height: 100%;
+		overflow: hidden;
+	}
+
+}
+*,
+*:after,
+*:before {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+// Some lines from reset.css
+ol,
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+blockquote,
+q {
+    quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+} // -----
+
+h1 {
+	@extend %h1;
+    font-family: $font-primary;
+}
+h2 {
+	@extend %h2;
+    font-family: $font-primary;
+}
+h3 {
+	@extend %h3;
+    font-family: $font-primary;
+}
+h4 {
+	@extend %h4;
+    font-family: $font-primary;
+}
+a {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	color: $color-link;
+	text-decoration: none;
+	transition: color .2s;
+	line-height: 1.2;
+	cursor: default;
+
+	&[href] {
+		cursor: pointer;
+	}
+
+	> strong {
+		font-weight: bold;
+	}
+	&:hover {
+		color: $color-link-hover;
+		outline: none;
+	}
+	&:focus {
+		color: $color-link-hover;
+		outline: none;
+	}
+	&:active {
+		color: $color-link;
+		opacity: 1;
+	}
+	&:visited {
+		color: $color-link;
+		&:hover,
+		&:active {
+			color: $color-link-hover;
+		}
+	}
+	&.highlight {
+		font-weight: bold;
+	}
+	&.link {
+		text-decoration: underline;
+		font-size: rem(14);
+	}
+	&.link-small {
+		font-size: rem(12);
+	}
+	&.link-restrained {
+		color: $color-dark-grey;
+	}
+	&.is-disabled {
+		pointer-events: none;
+	}
+}
+figure {
+	margin: 0;
+}
+
+.icon-link {
+	.svg-icon {
+		position: relative;
+		top: rem(2);
+		margin-right: rem(5);
+	}
+}
+
+a[href^="tel"] {
+	box-shadow: none !important;
+}
+
+//a[href],
+input[type='submit'],
+input[type='image'],
+select,
+button,
+.pointer {
+	cursor: pointer;
+	font: normal #{$base-font-size + px}/1.4375 $font-primary;
+}
+label {
+	font: normal #{$base-font-size + px}/1.4375 $font-primary;
+}
+label[for] {
+	cursor: pointer;
+}
+
+.t--notice {
+	color: $color-bittersweet-red;
+	font-weight: bold;
+	font-size: 110%;
+}
+.t--highlight {
+	color: $color-green;
+	font-weight: bold;
+	font-size: 120%;
+}
+
+hr {
+	border-width: 0;
+	border-top: rem(1) solid $color-grey-light;
+	margin-bottom: rem($space-medium);
+}
+
+.logo {
+	> .image-holder {
+		max-width: rem(157);
+	}
+}
+.link {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	text-decoration: underline;
+	display: inline-block;
+	padding: 0;
+	background: transparent;
+	border: 0;
+	font-size: rem(13);
+	&--back {
+		font-size: rem(13);
+		font-weight: bold;
+		margin-top: rem($space-small);
+	}
+	&:hover {
+		text-decoration: none;
+	}
+	&:focus {
+		outline: 0;
+	}
+	&:active {
+		outline: 0;
+	}
+	.button + & {
+		margin-left: rem(10);
+		padding-top: rem(12);
+	}
+}
+
+.visually-hidden {
+	position: absolute;
+	clip: rect(0 0 0 0);
+	border: 0;
+	padding: 0;
+	width: rem(1);
+	height: rem(1);
+	margin: rem(-1);
+	overflow: hidden;
+	padding: 0;
+}
+
+
+// .page-back {
+//     position: absolute;
+//     top: rem(9);
+//     left: 0;
+//     display: inline-block;
+//     a {
+//         display: inline-block;
+//         @include svg-bg('arrow-left-long.svg', #999999);
+//         background-position: left 1px;
+//         color: $color-grey-dark;
+//         padding-left: rem(18);
+//         font-weight: 500;
+//         font-size: rem(12);
+//         text-transform: uppercase;
+//     }
+// }
+
+.page-headline { // mainly used for h2's
+	@extend %h2;
+	text-align: center;
+	margin-top: rem(25);
+
+	@include mq($from: screen-sm){
+		max-width: rem(735);
+		margin-top: rem(45);
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+
+// SH: Fixing mobile navigation overlays
+html.menu-active,
+html.filter-active,
+html.menu-active body,
+html.filter-active body {
+	@include mq($until: screen-sm){
+		width: 100vw;
+		height: 100vh;
+		overflow: hidden;
+	}
+}
+.page-wrapper {
+	background-color: $color-white;
+	@include mq($until: screen-sm){
+		position: relative;
+		left: 0;
+		width: 100%;
+		transition: left .2s ease-in-out;
+		.menu-active &,
+		.filter-active & {
+			left: 70%;
+			height: 100vh;
+			overflow: hidden;
+		}
+	}
+	@include mq($until: screen-xs){
+		.menu-active &,
+		.filter-active & {
+			left: 80%;
+		}
+	}
+}
+
+.primary-content.deck { // SH: TODO - Hopefully only hits product-page
+	background-color: #f4f4f4;
+	& > .content-wrapper {
+		@include clearfix();
+		padding-top: rem(40);
+		padding-bottom: rem(80);
+		@include mq($from: screen-sm){
+			padding-bottom: rem(130);
+		}
+	}
+	// .page-title {
+	// 	//padding-top: 0;
+	// 	text-align: left;
+	// 	h1 {
+	// 		@extend %h2;
+	// 		margin-top: 0;
+	// 	}
+	// }
+}
+
+
+
+img {
+	max-width: 100%;
+	font-style: italic;
+	vertical-align: middle;
+
+	// SH: TODO - IF images should be faded in (until then, not pushed to the GPU)
+	// transition: opacity .6s;
+	// &.img-fade-in {
+	// 	opacity: 0;
+	// 	&.img-loaded {
+	// 		opacity: 1;
+	// 	}
+	// }
+}
+.toggle + .toggle-content {
+	display: none;
+}
+
+button,
+html [type="button"],
+[type="reset"],
+[type="submit"] {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	appearance: none;
+	outline: 0;
+	border: 0;
+}
+
+input,
+textarea,
+button,
+select {
+	font-family: $font-primary;
+}
+
+table {
+	width: 100%;
+	table-layout: fixed;
+}
+
+th {
+	text-align: left;
+}
+
+td {
+	padding: 1em;
+	vertical-align: top;
+	word-wrap: break-word;
+}
+
+.hidden {
+	display: none;
+}
+
+template { // needs to be hidden in IE
+	display: none;
+}
+
+xmp {
+	background-color: #fff;
+	padding: 5px;
+	white-space: pre-wrap;
+}
+
+code {
+	background-color: $color-grey-light;
+	padding: 12px;
+	font-size: rem(14);
+	color: $color-black;
+	font-style: italic;
+	display: block
+}

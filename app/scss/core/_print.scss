@@ -1,0 +1,50 @@
+@media print {
+    .reciept__header {
+        text-align: left;
+    }
+
+    .reciept__header > span {
+        float: none;
+        display: inline;
+    }
+
+    .print-button,
+    header,
+    footer,
+    a,
+    .banner,
+    .v--mobile-only,
+    .footer-navigation,
+    .filter-advanced,
+    .product-line-simple__thumb,
+    .mobile-menu-block {
+        display: none !important;
+    }
+
+    .pagebreak {
+        display: block;
+        page-break-before: always;
+    }
+
+    .reciept__section {
+        margin-bottom: em(40);
+    }
+
+    .box {
+        padding: 0;
+    }
+
+    .print-logo {
+        display: block;
+        margin-top: em(40);
+    }
+
+    .notification {
+        padding: 0;
+    }
+
+    .product-line-simple__info {
+        margin-left: 0;
+        width: 100%;
+    }
+}

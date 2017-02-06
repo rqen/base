@@ -1,0 +1,14 @@
+@function getSize($size, $base: 16, $unit:em) {
+    $base: $base-font-size !default;
+    $unit:em !default;
+    @return  ($size/$base)+$unit;
+}
+@function em($px, $base: $base-font-size) {
+  @return ($px / $base) + em;
+}
+@function rem($px, $base: $base-font-size) {
+  @return ($px / $base) + rem;
+}
+@function zindex($sel) {
+  @return map-get($zindex, $sel);
+}

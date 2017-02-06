@@ -1,0 +1,47 @@
+{
+  "name": "base",
+  "version": "0.0.1",
+  "description": "Base",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "find node_modules/ -name '*.info' -type f -delete"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rqen/base.git"
+  },
+  "keywords": [
+    "base",
+    "test"
+  ],
+  "author": "rqen.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rqen/base/issues"
+  },
+  "homepage": "https://github.com/rqen/base#readme",
+  "devDependencies": {
+    "autoprefixer": "^6.7.2",
+    "babelify": "^7.3.0",
+    "browser-sync": "^2.18.7",
+    "browserify": "^14.0.0",
+    "del": "^2.2.2",
+    "fs-extra": "^2.0.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-postcss": "^6.3.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-shell": "^0.5.2",
+    "gulp-sourcemaps": "^2.4.0",
+    "gulp-util": "^3.0.8",
+    "minimist": "^1.2.0",
+    "modernizr": "^3.3.1",
+    "node-notifier": "^5.0.2",
+    "run-sequence": "^1.2.2",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.9.0"
+  }
+}

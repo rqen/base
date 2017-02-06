@@ -1,0 +1,47 @@
+// $icons: (
+//     mapmarker: 'mapmarker.svg',
+//     floorplan-ico: 'floorplan-ico.svg',
+//     phone: 'phone.svg',
+//     close: 'close.svg',
+// );
+
+// $icons-grey: (
+//     facebook: 'social-facebook.svg',
+//     twitter: 'social-twitter.svg',
+//     instagram: 'social-instagram.svg',
+//     pinterest: 'social-pinterest.svg',
+//     youtube: 'social-youtube.svg',
+// );
+
+
+
+
+// %icon {
+//     background-repeat: no-repeat;
+//     display: inline-block;
+//     width: 1em;
+//     height: 1em;
+// }
+// .icon {
+//     @extend %icon;
+// }
+
+// @each $icon, $src in $icons {
+//     .icon-#{$icon} {
+//         @include svg-bg($src, $color-black);
+
+//     }
+//     .invert-color.icon-#{$icon} {
+//         @include svg-bg($src, $color-white);
+
+//     }
+// }
+
+
+// @each $icon, $src in $icons-grey {
+//     .icon-#{$icon} {
+//         @include svg-bg($src, $color-grey-dark);
+//     }
+// }
+
+

@@ -1,0 +1,165 @@
+@function calc-width($cols, $col){
+    @return (((($gutter-width+$column-width)*$col)) / $grid-width) * 100%;
+
+}
+@function calc-gutter-width($col){
+    @return (($gutter-width*$col) / $grid-width) * 100%;
+}
+
+
+@mixin flexbox-std($wrap: wrap, $justify: flex-start){
+    @include flexbox;
+    @include flex-flow;
+    @include align-items;
+    @include align-content;
+    @include flex-wrap($wrap);
+    @include justify-content($justify); // like text-align
+    margin-left: calc-gutter-width(.5) * -1;
+    margin-right: calc-gutter-width(.5) * -1;
+    > .flex-item,
+    > * {
+        box-sizing: border-box;
+        flex: 1;
+
+        margin-left: calc-gutter-width(.5);
+        margin-right: calc-gutter-width(.5);
+    }
+}
+@mixin flexbox-std-nogutter($wrap: wrap, $justify: flex-start){
+    @include flexbox;
+    @include flex-flow;
+    @include align-items;
+    @include align-content;
+    @include flex-wrap($wrap);
+    @include justify-content($justify); // like text-align
+    > .flex-item,
+    > * {
+        box-sizing: border-box;
+        flex: 1;
+    }
+}
+@mixin flexbox-std-fallback(){
+    .no-flexbox.no-flexboxtweener & {
+        display: block;
+        font-size: 0;
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+@mixin flex-item-fallback($width){
+    .no-flexbox.no-flexboxtweener & { //fallback
+        display: inline-block;
+        width: $width;
+        font-size: $base-font-size + px;
+        vertical-align: top;
+    }
+}
+
+@mixin responsive-grid-block($size) {
+    // Fixing 12 column row to go for a 100% and not 99%
+    > .flex-item.col-#{$size}-12 {
+        @include mq($from: 'screen-#{$size}') {
+            @include flex(0, 1, 100%);
+        }
+    }
+
+    @for $i from 2 through $grid-columns - 1 {
+        &.no-gutter > .flex-item.col-#{$size}-#{$i} {
+            @include mq($from: 'screen-#{$size}') {
+                @include flex(0, 1, calc-width($columns, $i));
+            }
+        }
+        > .flex-item.col-#{$size}-#{$i} {
+            @include mq($from: 'screen-#{$size}') {
+                @include flex(0, 1, calc-width($columns, $i) - calc-gutter-width(1));
+                @include flex-item-fallback(calc-width($columns, $i) - calc-gutter-width(1));
+            }
+        }
+    }
+    @for $i from 1 through $grid-columns {
+        @include mq($from: 'screen-#{$size}') {
+            .col-#{$size}-offset-#{$i} {
+                margin-left: (calc-width($columns, $i) + calc-gutter-width(.5));
+            }
+        }
+    }
+}
+
+.flex-grid { // flex-row example
+    @include flexbox-std(wrap, space-between);
+    @include flexbox-std-fallback();
+
+    &.no-gutter {
+        margin-left: auto;
+        margin-right: auto;
+
+        > .flex-item,
+        > * {
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+    &.no-wrap {
+        @include flex-wrap(nowrap);
+    }
+    &.align-center {
+        @include align-content(center);
+    }
+    &.align-left {
+        @include justify-content(flex-start);
+    }
+    &.align-spacebetween {
+        // remember to set custom flex-basis when using this..
+        @include justify-content(space-between);
+        // margin-left: auto;
+        // margin-right: auto;
+
+        // > .flex-item {
+        // }
+    }
+    &.align-spacearound {
+        @include justify-content(space-around);
+    }
+    // roen = offset starts at 2, thinking that 1 isn't useful - saving some lines of css
+    @for $i from 2 through $grid-columns - 1 {
+        &.no-gutter > .flex-item.col-#{$i} {
+            @include flex(0, 1, calc-width($columns, $i));
+        }
+        > .flex-item.col-#{$i} { // grid item width with no MQ
+            @include flex(0, 1, calc-width($columns, $i) - calc-gutter-width(1));
+            @include flex-item-fallback(calc-width($columns, $i) - calc-gutter-width(1));
+        }
+    }
+    @for $i from 1 through $grid-columns {
+        .col-offset-#{$i} {
+            margin-left: calc-width($columns, $i) + calc-gutter-width(.5);
+        }
+    }
+
+    > .flex-item.col-12 {
+        @include flex(0, 1, 100%);
+    }
+
+    // xs
+    @include responsive-grid-block(xs);
+    // sm
+    @include responsive-grid-block(sm);
+    // md
+    @include responsive-grid-block(md);
+    // lg
+    @include responsive-grid-block(lg);
+    // xl
+    @include responsive-grid-block(xl);
+    // xxl
+    @include responsive-grid-block(xxl);
+
+}
+
+
+
+
+
+
+
+

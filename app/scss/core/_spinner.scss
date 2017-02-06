@@ -1,0 +1,48 @@
+.spinner {
+    display: block;
+    height: 1em;
+    width: 1em;
+    margin: 0 auto;
+    animation: rotation 1s infinite linear;
+    border-left: .125em solid rgba(0, 0, 0,.15);
+    border-right: .125em solid rgba(0, 0, 0,.15);
+    border-bottom: .125em solid rgba(0, 0, 0,.15);
+    border-top: .125em solid rgba(0, 0, 0,.8);
+    border-radius: 50%;
+    font-size: 2em;
+    box-sizing: border-box;
+
+    &-white {
+        border-left: .125em solid rgba(255, 255, 255,.15);
+        border-right: .125em solid rgba(255, 255, 255,.15);
+        border-bottom: .125em solid rgba(255, 255, 255,.15);
+        border-top: .125em solid rgba(255, 255, 255,.8);
+    }
+
+    .no-cssanimations & {
+        border: 0;
+        background: url(/media/spinner_32x32.gif) no-repeat center center transparent !important; // TODO - fix path to gif
+        &.spinner-small {
+            background: url(/media/spinner_22x22.gif) no-repeat center center transparent !important;
+        }
+        &.spinner-large {
+            background: url(/media/spinner_44x44.gif) no-repeat center center transparent !important;
+        }
+    }
+    &.spinner-small {
+        font-size: 22 / $base-font-size + em;
+    }
+    &.spinner-large {
+        font-size: 44 / $base-font-size + em;
+    }
+}
+.spinner-large {
+    @extend .spinner;
+    font-size: 44/$base-font-size+em;
+}
+
+
+@keyframes rotation {
+   from { transform: rotate(0deg); }
+   to { transform: rotate(359deg); }
+}

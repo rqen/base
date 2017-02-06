@@ -1,0 +1,102 @@
+
+
+// ----------
+// Global
+// ----------
+$base-font-size: 16;
+$max-page-width: 1160;
+$max-page-width-narrow: $max-page-width - 400;
+$max-page-width-small: 970;
+$max-page-width-large: 1440;
+$max-form-width: 740; // SH: TODO - %paragraph could also use a setting
+
+$article-font-size: 14;
+
+$loader-animation-time: .5s; // used for loader/bg-fade of POP-page search refinements interaction animations
+
+
+// ----------
+// Header
+// ----------
+$header-menu-height: 140;
+// $header-menu-height-fixed: 68;
+$header-menu-height-mobile: 70;
+// $header-menu-height-fixed-mobile: 54;
+
+$logo-width: 202;
+$logo-height: 50;
+$logo-width-small: 105;
+$logo-height-small: 27;
+
+$header-search-height: 30;
+
+
+// ----------
+// Forms
+// ----------
+$form-field-height: 40;
+$form-field-height-small: 30;
+
+
+// ----------
+// Custom select settings
+// ----------
+$select-font-size: 14;
+$select-height: $form-field-height;
+
+
+// ----------
+// Page - when screen is smaller than max-width
+// ----------
+$page-gutter: 15;
+$modal-small: 512;
+$modal-large: 950;
+
+$main-content-margin-left: 60;
+
+$left-column-width: 220;
+$left-column-gutter: 60;
+$left-column-percentage: ($left-column-width / $max-page-width) * 100 + %;
+$left-column-gutter-percentage: (($left-column-width+$left-column-gutter) / $max-page-width) * 100 + %;
+
+
+// ----------
+// Media queries
+// ----------
+$mq-breakpoints: (
+    screen-xxs: 425px,  // mobile large
+    screen-xs: 567px,   // landscape
+    screen-sm: 768px,   // up to tablet portrait
+    screen-md: 1024px,  // tablet landscape + small desktop
+    screen-lg: 1160px,  // wrapper min-width
+    screen-xl: 1350px,  // wide screen
+    screen-xxl: 1440px,
+    screen-xxxl: 1570px
+);
+
+
+// ----------
+// Grid
+// ----------
+
+// inline grid
+$grid-gutter: 30;
+$grid-columns: 12;
+
+// floating grid
+$column-width: 70px;
+$gutter-width: 30px;
+$columns: $grid-columns;
+
+// grid sizings
+$columns: 12 !default;
+$gutter-width: 30 !default;
+$column-width: 70 !default;
+$grid-width: (($columns * $gutter-width) + ($columns * $column-width));
+
+
+// ----------
+// Fonts
+// ----------
+$font-primary: arial, sans-serif;
+$font-secondary: serif;

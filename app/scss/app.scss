@@ -1,0 +1,47 @@
+
+// ----------
+// Settings
+// ----------
+@import "core/settings";
+@import "core/colors";
+@import "core/sizes";
+
+
+// ----------
+// Libs, mixins, etc.
+// ----------
+@import "lib/reset";
+@import "lib/normalize";
+@import "core/functions";
+@import "core/mixins";
+@import "core/mq";
+@import "core/extends";
+
+
+// ----------
+// Grid
+// ----------
+@import "core/flex";
+
+
+// ----------
+// Core components (first css output)
+// ----------
+@import "core/general";
+@import "core/rich-text";
+// @import "core/text-helpers";
+@import "core/svg-icon";
+@import "core/flex-grid";
+// @import "core/icons";
+// @import "core/helper-classes";
+// @import "core/animations";
+// @import "core/overlay";
+@import "core/spinner";
+
+
+// ----------
+// Components
+// ----------
+.spacer {
+	background-color: tomato;
+}

@@ -1,0 +1,108 @@
+@mixin svg-bg($svgfile, $fill:$color-black) {
+	background-image: svg-load($svgfile, fill=$fill);
+	background-size: 1em 1em;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+}
+
+// The micro clearfix http://nicolasgallagher.com/micro-clearfix-hack/
+@mixin clearfix() {
+	&:before,
+	&:after {
+		content: '';
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+@mixin linear-gradient($from, $to, $type:0, $opacity:0){
+	$type: "transparent" !default;
+	@if $type == "transparent" {
+		background: -moz-linear-gradient(top, rgba($to, $opacity) 0%, rgba($from, 0) 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba($to, $opacity)), color-stop(100%,rgba($from, 0)));
+		background: -webkit-linear-gradient(top, rgba($to, $opacity) 0%, rgba($from, 0) 100%);
+		background: -o-linear-gradient(top, rgba($to, $opacity) 0%, rgba($from, 0) 100%);
+		background: -ms-linear-gradient(top, rgba($to, $opacity) 0%, rgba($from, 0) 100%);
+		background: linear-gradient(to bottom, rgba($to, $opacity) 0%, rgba($from, 0) 100%);
+	}
+
+}
+
+@mixin aspect-ratio($width, $height, $class:"content") {
+	position: relative;
+	&:before {
+		display: block;
+		content: "";
+		width: 100%;
+		padding-top: ($height / $width) * 100%;
+	}
+	> .#{$class} {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+}
+
+@mixin screen-readers-only() {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	border: 0;
+	overflow: hidden;
+	clip: rect(0,0,0,0);
+}
+
+@mixin reset-button() {
+	background: none;
+	border: 0;
+	color: inherit;
+	font: inherit;
+	line-height: normal;
+	overflow: visible;
+	padding: 0;
+	cursor: pointer;
+	-webkit-appearance: button; /* for input */
+	-webkit-user-select: none; /* for button */
+	-moz-user-select: none;
+	-ms-user-select: none;
+	//&:hover {}
+	&:active, &:focus {
+		outline: 0;
+	}
+}
+
+@mixin triangle($width, $height, $color, $direction) {
+	$half-width: $width / 2;
+	content: '';
+	display: block;
+	width: 0;
+	height: 0;
+	z-index: 10;
+
+	@if ($direction == up) {
+		border-left: rem($half-width) solid transparent;
+		border-right: rem($half-width) solid transparent;
+		border-bottom: rem($height) solid $color;
+	}
+	@if ($direction == down) {
+		border-left: rem($half-width) solid transparent;
+		border-right: rem($half-width) solid transparent;
+		border-top: rem($height) solid $color;
+	}
+	@if ($direction == left) {
+		border-top: rem($half-width) solid transparent;
+		border-bottom: rem($half-width) solid transparent;
+		border-right: rem($height) solid $color;
+	}
+	@if ($direction == right) {
+		border-top: rem($half-width) solid transparent;
+		border-bottom: rem($half-width) solid transparent;
+		border-left: rem($height) solid $color;
+	}
+}
